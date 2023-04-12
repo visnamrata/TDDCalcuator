@@ -27,11 +27,6 @@ class TddApplicationTests {
 	}
 
 	@Test
-	public void testAddMultipleNumbers() {
-		assertEquals(3, calculator.add("1,2"));
-	}
-
-	@Test
 	public void testNewLine() {
 		assertEquals(10, calculator.add("1\n2,3\n4"));
 	}
@@ -41,13 +36,18 @@ class TddApplicationTests {
 		try {
 			calculator.add("-1,2");
 		} catch (IllegalArgumentException e) {
-			assertEquals(e.getMessage(), "Negatives not allowed: -1");
+			assertEquals(e.getMessage(), "Negatives numbers are not allowed: -1");
 		}
 		try {
 			calculator.add("1,-2,3,-5");
 		} catch (IllegalArgumentException e) {
-			assertEquals(e.getMessage(), "Negatives not allowed: -2,-5");
+			assertEquals(e.getMessage(), "Negatives numbers are not allowed: -2,-5");
 		}
+	}
+
+	@Test
+	public void testAddMultipleNumbers() {
+		assertEquals(3, calculator.add("1,2"));
 	}
 
 	@Test
